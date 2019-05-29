@@ -19,6 +19,7 @@ class MapVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        mapView.delegate = self
         if (studentsLocations == nil) {
             reloadStudentsLocations(self)
         }
@@ -91,7 +92,7 @@ class MapVC: UIViewController {
         }
         
         print("New annotations = ", annotaions.count)
-        mapView.addAnnotation(annotaions as! MKAnnotation)
+        mapView.addAnnotations(annotaions)
     }
 }
 
@@ -114,7 +115,7 @@ extension MapVC: MKMapViewDelegate {
         return pinView
     }
     
-    func mapView(_ mapView: MKMapView, annotaionView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared

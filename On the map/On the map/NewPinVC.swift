@@ -33,7 +33,11 @@ class NewPinVC: UIViewController {
     
     func updateUI(processing: Bool){
         DispatchQueue.main.async {
-            self.activityIndicator.isHidden = !processing
+            if processing {
+                self.activityIndicator.startAnimating()
+            } else {
+                self.activityIndicator.stopAnimating()
+            }
             self.findButton.isEnabled = !processing
         }
     }

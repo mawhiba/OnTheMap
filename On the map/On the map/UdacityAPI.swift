@@ -14,7 +14,7 @@ class UdacityAPI {
     
     static func postSession(with email: String, password: String, completion: @escaping ([String:Any]?, Error?) -> ())
     {
-        var request = URLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -35,7 +35,7 @@ class UdacityAPI {
     
     static func deleteSession(completion: @escaping (Error?) -> ())
     {
-        var request = URLRequest(url: URL(string : "https://www.udacity.com/api/session")!)
+        var request = URLRequest(url: URL(string : "https://onthemap-api.udacity.com/v1/session")!)
         request.httpMethod = "DELETE"
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookiesStorage = HTTPCookieStorage.shared
@@ -65,7 +65,7 @@ class UdacityAPI {
         
         static func postStudentLocation(link: String, locationCoordinate: CLLocationCoordinate2D, locationName: String, completion: @escaping (Error?) -> ())
         {
-            var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+            var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/StudentLocation")!)
             request.httpMethod = "POST"
             request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
             request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -86,7 +86,7 @@ class UdacityAPI {
         
         static func getStudentLocation(completion: @escaping ([StudentLocation]?, Error?) -> ())
         {
-            let BASE_URL = "https://parse.udacity.com/parse/classes/StudentLocation"
+            let BASE_URL = "https://onthemap-api.udacity.com/v1/StudentLocation"
             var request = URLRequest(url: URL(string: BASE_URL + "?limit=100&order=-updatedAt")!)
             request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
             request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
